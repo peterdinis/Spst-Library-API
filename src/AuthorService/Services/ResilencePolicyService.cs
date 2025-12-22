@@ -2,7 +2,7 @@ using Polly;
 using Polly.Timeout;
 using Microsoft.Extensions.Logging;
 
-namespace BooksService.Services
+namespace AuthorServicea.Services
 {
     public interface IResiliencePolicyService
     {
