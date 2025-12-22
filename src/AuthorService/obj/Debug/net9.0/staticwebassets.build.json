@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "7aASAh3stUr2VP732D+wTKKCLfhwGgAMDoCD2zXiyS8=",
+  "Source": "AuthorService",
+  "BasePath": "_content/AuthorService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+@AdminService_HostAddress = http://localhost:5131
+=======
+@AdminService_HostAddress = http://localhost:5231
+>>>>>>> main
+
+GET {{AdminService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

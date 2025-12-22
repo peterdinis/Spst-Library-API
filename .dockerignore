@@ -1,0 +1,9 @@
+**/obj/
+**/bin/
+.git/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userprefs
+*.csproj.user

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "oT9zJo6ReBo=",
+  "success": true,
+  "projectFilePath": "/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/NotificationService/NotificationService.csproj",
+  "expectedPackageFiles": [
+    "/home/peterdinis/.nuget/packages/microsoft.aspnetcore.openapi/9.0.11/microsoft.aspnetcore.openapi.9.0.11.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

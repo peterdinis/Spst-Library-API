@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Txo8k9LI5CWxzbHGgswiWc9WFU2K+T9P0kb7WsflXDM=",
+  "Source": "CategoryService",
+  "BasePath": "_content/CategoryService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
