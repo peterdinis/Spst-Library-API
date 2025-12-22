@@ -46,9 +46,9 @@ builder.Services.AddSingleton<IResiliencePolicyService, ResiliencePolicyService>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 
-// Optional: Add Swagger for API documentation
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Remove or comment out Swagger configuration if you don't need it
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -59,13 +59,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseCors("AllowAll");
     
-    // Enable Swagger UI in development
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Author Service API V1");
-        options.RoutePrefix = "swagger";
-    });
+    // Remove or comment out Swagger UI if you don't need it
+    // app.UseSwagger();
+    // app.UseSwaggerUI(options =>
+    // {
+    //     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Author Service API V1");
+    //     options.RoutePrefix = "swagger";
+    // });
 }
 else
 {

@@ -2,11 +2,11 @@ using Polly;
 using Polly.Timeout;
 using Microsoft.Extensions.Logging;
 
-namespace AuthorServicea.Services
+namespace AuthorService.Services
 {
     public interface IResiliencePolicyService
     {
-        IAsyncPolicy GetResiliencePolicy();
+        IAsyncPolicy<T> GetPolicy<T>();
     }
 
     public class ResiliencePolicyService : IResiliencePolicyService
@@ -18,9 +18,9 @@ namespace AuthorServicea.Services
             _logger = logger;
         }
 
-        public IAsyncPolicy GetResiliencePolicy()
+        public IAsyncPolicy<T> GetPolicy<T>()
         {
-            // Retry policy
+            // Build the non-generic policy
             var retryPolicy = Policy
                 .Handle<Exception>()
                 .WaitAndRetryAsync(
@@ -33,7 +33,6 @@ namespace AuthorServicea.Services
                             retryCount, timeSpan.TotalSeconds);
                     });
 
-            // Timeout policy
             var timeoutPolicy = Policy
                 .TimeoutAsync(TimeSpan.FromSeconds(10),
                     TimeoutStrategy.Pessimistic,
@@ -43,7 +42,6 @@ namespace AuthorServicea.Services
                         return Task.CompletedTask;
                     });
 
-            // Circuit breaker policy (voliteľné)
             var circuitBreakerPolicy = Policy
                 .Handle<Exception>()
                 .CircuitBreakerAsync(
@@ -64,8 +62,9 @@ namespace AuthorServicea.Services
                         _logger.LogInformation("Circuit half-open");
                     });
 
-            // Zloženie: Timeout -> Circuit Breaker -> Retry
-            return Policy.WrapAsync(timeoutPolicy, circuitBreakerPolicy, retryPolicy);
+            // Wrap policies and convert to generic
+            var wrappedPolicy = Policy.WrapAsync(timeoutPolicy, circuitBreakerPolicy, retryPolicy);
+            return wrappedPolicy.AsAsyncPolicy<T>();
         }
     }
 }
