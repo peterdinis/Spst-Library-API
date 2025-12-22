@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using CategoryService.Interfaces;
 using CategoryService.Services;
 using CategoryService.Repositories;
+using Microsoft.OpenApi.Models; // Add for Swagger
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,30 +14,25 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Get allowed origins from configuration BEFORE building the CORS policy
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+    ?? new[] { "http://localhost:3000" };
+
 // Add CORS services
 builder.Services.AddCors(options =>
 {
     // Development policy - allow all
     options.AddPolicy("AllowAll",
-        builder => builder
+        policy => policy
             .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader());
-    
+
     // Production policy - specific origins
     options.AddPolicy("AllowSpecificOrigins",
-        builder =>
+        policy =>
         {
-            // Get allowed origins from configuration or use defaults
-            var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-                ?? new[] { 
-                    "http://localhost:3000", 
-                    "https://localhost:3000", 
-                    "http://localhost:5173", 
-                    "https://localhost:5173" 
-                };
-            
-            builder.WithOrigins(allowedOrigins)
+            policy.WithOrigins(allowedOrigins)
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();
@@ -58,34 +54,10 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<CreateCategoryDtoValidator>();
 builder.Services.AddScoped<UpdateCategoryDtoValidator>();
 
-// Add Swagger for API documentation
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new() { Title = "Category Service API", Version = "v1" });
-});
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+app.UseCors("AllowAll"); // Use specific origins in production
 
-// Use CORS - Must be before UseAuthorization and MapControllers
-if (app.Environment.IsDevelopment())
-{
-    app.UseCors("AllowAll");
-    
-    // Enable Swagger UI in development
-    app.UseSwagger();
-    app.UseSwaggerUI(c => 
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Category Service API v1");
-        c.RoutePrefix = "swagger";
-    });
-}
-else
-{
-    app.UseCors("AllowSpecificOrigins");
-}
 
 app.UseAuthorization();
 app.MapControllers();
