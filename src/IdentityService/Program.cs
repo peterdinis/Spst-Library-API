@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using IdentityService.Data;
 using IdentityService.Entities;
 
@@ -41,36 +40,40 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.Name = "SchoolLibraryAuth";
 
     // Important for CORS with authentication
-    options.Cookie.SameSite = SameSiteMode.None; // Allow cross-site requests
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Require HTTPS for cookies
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 
-// Add CORS with proper configuration for authentication
+// Add CORS
 builder.Services.AddCors(options =>
 {
-    // Development policy - more permissive
-    options.AddPolicy("AllowAll",
-        policy => policy
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials()); // Important for cookies/authentication
-
-    // Production policy - specific origins
-    options.AddPolicy("AllowSpecificOrigins",
+    options.AddPolicy("CorsPolicy",
         policy =>
         {
-            // Get allowed origins from configuration
-            var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-                ?? new[] {
-                    "http://localhost:3000",
-                };
-
-            policy.WithOrigins(allowedOrigins)
+            // Start with default development origins
+            var allowedOrigins = new List<string> { 
+                "http://localhost:3000", 
+                "https://localhost:3000",
+                "http://localhost:5173",
+                "https://localhost:5173",
+                "http://localhost:5000",
+                "https://localhost:5000",
+                "http://localhost:5001",
+                "https://localhost:5001"
+            };
+            
+            // Add any from configuration if available
+            var configOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
+            if (configOrigins != null && configOrigins.Length > 0)
+            {
+                allowedOrigins.AddRange(configOrigins);
+            }
+            
+            policy.WithOrigins(allowedOrigins.Distinct().ToArray())
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  .AllowCredentials() // For authentication
-                  .WithExposedHeaders("Set-Cookie"); // Expose cookie header
+                  .AllowCredentials()
+                  .WithExposedHeaders("Set-Cookie", "Access-Control-Allow-Credentials");
         });
 });
 
@@ -79,11 +82,11 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-app.UseCors("AllowAll");
-
+// Use CORS
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
-app.UseAuthentication(); // Authentication before Authorization
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
