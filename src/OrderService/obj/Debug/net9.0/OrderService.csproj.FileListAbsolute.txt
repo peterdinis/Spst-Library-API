@@ -62,7 +62,6 @@
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/System.Composition.Hosting.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/System.Composition.Runtime.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/System.Composition.TypedParts.dll
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/System.Text.Json.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll
@@ -165,3 +164,4 @@
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/obj/Debug/net9.0/OrderService.pdb
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/obj/Debug/net9.0/OrderService.genruntimeconfig.cache
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/obj/Debug/net9.0/ref/OrderService.dll
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/OrderService/bin/Debug/net9.0/Newtonsoft.Json.dll
