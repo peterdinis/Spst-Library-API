@@ -118,5 +118,49 @@ namespace IdentityService.Controllers
         {
             return StatusCode(403, new { message = "Access denied" });
         }
+
+        // Simple test endpoint
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return Ok(new 
+            {
+                message = "Auth API is working!",
+                timestamp = DateTime.UtcNow,
+                version = "1.0",
+                endpoints = new[]
+                {
+                    "/api/auth/register (POST)",
+                    "/api/auth/login (POST)",
+                    "/api/auth/logout (POST)",
+                    "/api/auth/current-user (GET)",
+                    "/api/auth/test (GET)"
+                }
+            });
+        }
+
+        // Health check endpoint
+        [HttpGet("health")]
+        public IActionResult HealthCheck()
+        {
+            return Ok(new 
+            {
+                status = "healthy",
+                service = "IdentityService.AuthController",
+                timestamp = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"),
+                environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"
+            });
+        }
+        
+        [HttpGet("ping")]
+        [AllowAnonymous]
+        public IActionResult Ping()
+        {
+            return Ok(new 
+            {
+                message = "pong",
+                serverTime = DateTime.UtcNow
+            });
+        }
     }
 }
