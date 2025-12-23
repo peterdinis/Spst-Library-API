@@ -39,7 +39,7 @@ namespace IdentityService.Controllers
             if (result.Succeeded)
             {
                 // Assign role
-                if (!string.IsNullOrEmpty(model.Role) && 
+                if (!string.IsNullOrEmpty(model.Role) &&
                     (model.Role == "Admin" || model.Role == "Teacher" || model.Role == "Student"))
                 {
                     await _userManager.AddToRoleAsync(user, model.Role);
@@ -62,15 +62,15 @@ namespace IdentityService.Controllers
                 return Unauthorized(new { message = "Invalid credentials" });
 
             var result = await _signInManager.PasswordSignInAsync(
-                user, 
-                model.Password, 
-                model.RememberMe, 
+                user,
+                model.Password,
+                model.RememberMe,
                 lockoutOnFailure: true);
 
             if (result.Succeeded)
             {
                 var roles = await _userManager.GetRolesAsync(user);
-                
+
                 return Ok(new UserResponseDto
                 {
                     Id = user.Id,
@@ -123,7 +123,7 @@ namespace IdentityService.Controllers
         [HttpGet("test")]
         public IActionResult Test()
         {
-            return Ok(new 
+            return Ok(new
             {
                 message = "Auth API is working!",
                 timestamp = DateTime.UtcNow,
@@ -143,7 +143,7 @@ namespace IdentityService.Controllers
         [HttpGet("health")]
         public IActionResult HealthCheck()
         {
-            return Ok(new 
+            return Ok(new
             {
                 status = "healthy",
                 service = "IdentityService.AuthController",
@@ -151,16 +151,12 @@ namespace IdentityService.Controllers
                 environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"
             });
         }
-        
+
         [HttpGet("ping")]
         [AllowAnonymous]
-        public static IActionResult Ping()
+        public IActionResult Ping()
         {
-            return Ok(new 
-            {
-                message = "pong",
-                serverTime = DateTime.UtcNow
-            });
+            return Ok("WORK");
         }
     }
 }
