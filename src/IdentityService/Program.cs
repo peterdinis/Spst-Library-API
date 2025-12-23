@@ -53,13 +53,6 @@ builder.Services.AddCors(options =>
             // Start with default development origins
             var allowedOrigins = new List<string> { 
                 "http://localhost:3000", 
-                "https://localhost:3000",
-                "http://localhost:5173",
-                "https://localhost:5173",
-                "http://localhost:5000",
-                "https://localhost:5000",
-                "http://localhost:5001",
-                "https://localhost:5001"
             };
             
             // Add any from configuration if available
