@@ -154,7 +154,7 @@ namespace IdentityService.Controllers
         
         [HttpGet("ping")]
         [AllowAnonymous]
-        public IActionResult Ping()
+        public static IActionResult Ping()
         {
             return Ok(new 
             {
