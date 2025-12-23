@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using IdentityService.Data;
 using IdentityService.Entities;
 
@@ -18,11 +19,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
     options.Password.RequiredLength = 6;
-    
+
     // Lockout settings
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
     options.Lockout.MaxFailedAccessAttempts = 5;
-    
+
     // User settings
     options.User.RequireUniqueEmail = true;
 })
@@ -38,7 +39,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/api/auth/access-denied";
     options.SlidingExpiration = true;
     options.Cookie.Name = "SchoolLibraryAuth";
-    
+
     // Important for CORS with authentication
     options.Cookie.SameSite = SameSiteMode.None; // Allow cross-site requests
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Require HTTPS for cookies
@@ -54,20 +55,17 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()); // Important for cookies/authentication
-    
+
     // Production policy - specific origins
     options.AddPolicy("AllowSpecificOrigins",
         policy =>
         {
             // Get allowed origins from configuration
             var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-                ?? new[] { 
-                    "http://localhost:3000", 
-                    "https://localhost:3000",
-                    "http://localhost:5173",
-                    "https://localhost:5173"
+                ?? new[] {
+                    "http://localhost:3000",
                 };
-            
+
             policy.WithOrigins(allowedOrigins)
                   .AllowAnyMethod()
                   .AllowAnyHeader()
@@ -79,43 +77,10 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Add Swagger for API documentation
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new() { Title = "Identity Service API", Version = "v1" });
-    
-    // Configure Swagger to handle authentication
-    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        Description = "JWT Authorization header using the Bearer scheme",
-        Name = "Authorization",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
-});
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
+app.UseCors("AllowAll");
 
-// Use CORS - must be before UseAuthentication and UseAuthorization
-if (app.Environment.IsDevelopment())
-{
-    app.UseCors("AllowAll");
-    
-    // Enable Swagger UI in development
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity Service API v1");
-        c.RoutePrefix = "swagger";
-    });
-}
-else
-{
-    app.UseCors("AllowSpecificOrigins");
-}
 
 app.UseHttpsRedirection();
 app.UseAuthentication(); // Authentication before Authorization
