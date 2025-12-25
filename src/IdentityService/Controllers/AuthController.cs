@@ -38,13 +38,6 @@ namespace IdentityService.Controllers
 
             if (result.Succeeded)
             {
-                // Assign role
-                if (!string.IsNullOrEmpty(model.Role) &&
-                    (model.Role == "Admin" || model.Role == "Teacher" || model.Role == "Student"))
-                {
-                    await _userManager.AddToRoleAsync(user, model.Role);
-                }
-
                 return Ok(new { message = "User registered successfully" });
             }
 
@@ -69,14 +62,11 @@ namespace IdentityService.Controllers
 
             if (result.Succeeded)
             {
-                var roles = await _userManager.GetRolesAsync(user);
-
                 return Ok(new UserResponseDto
                 {
                     Id = user.Id,
                     Email = user.Email!,
                     FullName = user.FullName,
-                    Roles = [.. roles],
                 });
             }
 
@@ -102,14 +92,11 @@ namespace IdentityService.Controllers
             if (user == null)
                 return Unauthorized();
 
-            var roles = await _userManager.GetRolesAsync(user);
-
             return Ok(new UserResponseDto
             {
                 Id = user.Id,
                 Email = user.Email!,
                 FullName = user.FullName,
-                Roles = [.. roles],
             });
         }
 
