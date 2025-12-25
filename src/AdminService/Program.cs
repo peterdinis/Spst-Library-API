@@ -40,58 +40,23 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.Name = "AdminCookie";
     
     // CORS settings for cookies
-    options.Cookie.SameSite = SameSiteMode.None; // Pre CORS a rôzne domény
+    options.Cookie.SameSite = SameSiteMode.None; // Pre CORS
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // HTTPS only
 });
 
-// Add CORS with specific configuration for authentication
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        policy => policy
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .WithExposedHeaders("Set-Cookie") // Pre autentifikačné cookies
-            .AllowCredentials()); // Povoliť credentials pre autentifikáciu
-    
-    // Alternatívna politika pre špecifické domény (odporúčané pre produkciu)
-    options.AddPolicy("AllowSpecificOrigins",
-        policy =>
-        {
-            var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
-                ?? new[] { "http://localhost:3000", "https://localhost:3000" };
-            
-            policy.WithOrigins(allowedOrigins)
-                   .AllowAnyMethod()
-                   .AllowAnyHeader()
-                   .WithExposedHeaders("Set-Cookie")
-                   .AllowCredentials();
-        });
-});
+// Basic CORS setup
+builder.Services.AddCors();
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-    
-    // In development, use AllowAll CORS policy
-    app.UseCors("AllowAll");
-}
-else
-{
-    app.UseExceptionHandler("/error");
-    app.UseHsts();
-    
-    // In production, use specific origins
-    app.UseCors("AllowSpecificOrigins");
-}
+// Use CORS with basic policy
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials());
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
