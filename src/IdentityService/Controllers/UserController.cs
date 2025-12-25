@@ -9,7 +9,6 @@ namespace IdentityService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
     public class UsersController(UserManager<ApplicationUser> userManager) : ControllerBase
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
