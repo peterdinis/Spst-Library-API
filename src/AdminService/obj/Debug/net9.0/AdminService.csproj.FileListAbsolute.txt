@@ -1,3 +1,11 @@
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.csproj.AssemblyReference.cache
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.GeneratedMSBuildEditorConfig.editorconfig
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.AssemblyInfoInputs.cache
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.AssemblyInfo.cs
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.csproj.CoreCompileInputs.cache
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.MvcApplicationPartsAssemblyInfo.cs
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.MvcApplicationPartsAssemblyInfo.cache
+/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.sourcelink.json
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/bin/Debug/net9.0/appsettings.Development.json
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/bin/Debug/net9.0/appsettings.json
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/bin/Debug/net9.0/AdminService.staticwebassets.endpoints.json
@@ -134,14 +142,6 @@
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/bin/Debug/net9.0/runtimes/win-arm64/native/e_sqlite3.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/bin/Debug/net9.0/runtimes/win-x64/native/e_sqlite3.dll
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/bin/Debug/net9.0/runtimes/win-x86/native/e_sqlite3.dll
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.csproj.AssemblyReference.cache
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.GeneratedMSBuildEditorConfig.editorconfig
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.AssemblyInfoInputs.cache
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.AssemblyInfo.cs
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.csproj.CoreCompileInputs.cache
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.MvcApplicationPartsAssemblyInfo.cs
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.MvcApplicationPartsAssemblyInfo.cache
-/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/AdminService.sourcelink.json
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/scopedcss/bundle/AdminService.styles.css
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/staticwebassets.build.json
 /home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/obj/Debug/net9.0/staticwebassets.development.json

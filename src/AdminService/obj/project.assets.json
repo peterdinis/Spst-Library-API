@@ -2,9 +2,6 @@
   "version": 3,
   "targets": {
     "net9.0": {
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.OpenApi/9.0.9": {
-=======
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -65,7 +62,6 @@
         }
       },
       "Microsoft.AspNetCore.OpenApi/9.0.11": {
->>>>>>> main
         "type": "package",
         "dependencies": {
           "Microsoft.OpenApi": "1.6.17"
@@ -84,8 +80,6 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-<<<<<<< HEAD
-=======
       "Microsoft.Bcl.AsyncInterfaces/7.0.0": {
         "type": "package",
         "compile": {
@@ -806,7 +800,6 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
->>>>>>> main
       "Microsoft.OpenApi/1.6.17": {
         "type": "package",
         "compile": {
@@ -819,8 +812,6 @@
             "related": ".pdb;.xml"
           }
         }
-<<<<<<< HEAD
-=======
       },
       "Mono.TextTemplating/3.0.0": {
         "type": "package",
@@ -1205,17 +1196,10 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
->>>>>>> main
       }
     }
   },
   "libraries": {
-<<<<<<< HEAD
-    "Microsoft.AspNetCore.OpenApi/9.0.9": {
-      "sha512": "3Sina0gS/CTYt9XG6DUFPdXOmJui7e551U0kO2bIiDk3vZ2sctxxenN+cE1a5CrUpjIVZfZr32neWYYRO+Piaw==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.openapi/9.0.9",
-=======
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -1291,7 +1275,6 @@
       "sha512": "rTa3lp6B8KM8AESIwLakTT6XaoUBTnjAZq2pRX6zS/BzQy6mOVUgaawRSyM0WHykHdwbfrEAmer3ys2xE4DVtg==",
       "type": "package",
       "path": "microsoft.aspnetcore.openapi/9.0.11",
->>>>>>> main
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1300,12 +1283,6 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
         "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
-<<<<<<< HEAD
-        "microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
-        "microsoft.aspnetcore.openapi.nuspec"
-      ]
-    },
-=======
         "microsoft.aspnetcore.openapi.9.0.11.nupkg.sha512",
         "microsoft.aspnetcore.openapi.nuspec"
       ]
@@ -2800,7 +2777,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
->>>>>>> main
     "Microsoft.OpenApi/1.6.17": {
       "sha512": "Le+kehlmrlQfuDFUt1zZ2dVwrhFQtKREdKBo+rexOwaCoYP0/qpgT9tLxCsZjsgR5Itk1UKPcbgO+FyaNid/bA==",
       "type": "package",
@@ -2815,8 +2791,6 @@
         "microsoft.openapi.1.6.17.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
-<<<<<<< HEAD
-=======
     },
     "Mono.TextTemplating/3.0.0": {
       "sha512": "YqueG52R/Xej4VVbKuRIodjiAhV0HR/XVbLbNrJhCZnzjnSjgMJ/dCdV0akQQxavX6hp/LC6rqLGLcXeQYU7XA==",
@@ -3335,20 +3309,15 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
->>>>>>> main
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-<<<<<<< HEAD
-      "Microsoft.AspNetCore.OpenApi >= 9.0.9"
-=======
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.11",
       "Microsoft.AspNetCore.OpenApi >= 9.0.11",
       "Microsoft.EntityFrameworkCore >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Sqlite >= 9.0.11"
->>>>>>> main
     ]
   },
   "packageFolders": {
@@ -3395,11 +3364,6 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
-<<<<<<< HEAD
-          "Microsoft.AspNetCore.OpenApi": {
-            "target": "Package",
-            "version": "[9.0.9, )"
-=======
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[9.0.11, )"
@@ -3419,7 +3383,6 @@
           "Microsoft.EntityFrameworkCore.Sqlite": {
             "target": "Package",
             "version": "[9.0.11, )"
->>>>>>> main
           }
         },
         "imports": [
@@ -3441,11 +3404,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
-=======
         "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
->>>>>>> main
       }
     }
   }
