@@ -1,13 +1,5 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "ODh93z1smvE=",
-  "success": true,
-  "projectFilePath": "/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/AdminService.csproj",
-  "expectedPackageFiles": [
-    "/home/peterdinis/.nuget/packages/microsoft.aspnetcore.openapi/9.0.9/microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
-    "/home/peterdinis/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
-=======
   "dgSpecHash": "98X+lv7axk0=",
   "success": true,
   "projectFilePath": "/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/AdminService/AdminService.csproj",
@@ -66,7 +58,6 @@
     "/home/peterdinis/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/peterdinis/.nuget/packages/system.text.json/9.0.11/system.text.json.9.0.11.nupkg.sha512",
     "/home/peterdinis/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512"
->>>>>>> main
   ],
   "logs": []
 }
