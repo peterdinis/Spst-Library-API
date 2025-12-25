@@ -48,7 +48,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
-        builder => builder
+        policy => policy
             .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()
@@ -57,12 +57,12 @@ builder.Services.AddCors(options =>
     
     // Alternatívna politika pre špecifické domény (odporúčané pre produkciu)
     options.AddPolicy("AllowSpecificOrigins",
-        builder =>
+        policy =>
         {
             var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
                 ?? new[] { "http://localhost:3000", "https://localhost:3000" };
             
-            builder.WithOrigins(allowedOrigins)
+            policy.WithOrigins(allowedOrigins)
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .WithExposedHeaders("Set-Cookie")
@@ -73,22 +73,23 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// Optional: Add Swagger for API documentation
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
 
-// Use CORS - must come before UseAuthentication and UseAuthorization
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
+    
+    // In development, use AllowAll CORS policy
     app.UseCors("AllowAll");
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 else
 {
+    app.UseExceptionHandler("/error");
+    app.UseHsts();
+    
+    // In production, use specific origins
     app.UseCors("AllowSpecificOrigins");
 }
 
