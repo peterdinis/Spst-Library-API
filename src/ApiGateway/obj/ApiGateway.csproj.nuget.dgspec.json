@@ -45,9 +45,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Yarp.ReverseProxy": {
+            "Ocelot": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[24.1.0, )"
             }
           },
           "imports": [

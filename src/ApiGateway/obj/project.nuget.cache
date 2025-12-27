@@ -1,11 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "3YaWKzVWLzQ=",
+  "dgSpecHash": "gbCaKDX8iJ0=",
   "success": true,
   "projectFilePath": "/home/peterdinis/Desktop/CV/csharp-apps/spst-library/src/ApiGateway/ApiGateway.csproj",
   "expectedPackageFiles": [
-    "/home/peterdinis/.nuget/packages/system.io.hashing/8.0.0/system.io.hashing.8.0.0.nupkg.sha512",
-    "/home/peterdinis/.nuget/packages/yarp.reverseproxy/2.3.0/yarp.reverseproxy.2.3.0.nupkg.sha512"
+    "/home/peterdinis/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/ipaddressrange/6.3.0/ipaddressrange.6.3.0.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.aspnetcore.jsonpatch/9.0.11/microsoft.aspnetcore.jsonpatch.9.0.11.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.aspnetcore.middlewareanalysis/9.0.11/microsoft.aspnetcore.middlewareanalysis.9.0.11.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/9.0.11/microsoft.aspnetcore.mvc.newtonsoftjson.9.0.11.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.11/microsoft.extensions.dependencyinjection.abstractions.9.0.11.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/microsoft.extensions.diagnosticadapter/3.1.32/microsoft.extensions.diagnosticadapter.3.1.32.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/newtonsoft.json.bson/1.0.2/newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/ocelot/24.1.0/ocelot.24.1.0.nupkg.sha512",
+    "/home/peterdinis/.nuget/packages/system.diagnostics.diagnosticsource/4.7.1/system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }

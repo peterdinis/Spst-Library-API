@@ -37,7 +37,6 @@ services:
       - authorservice
       - categoryservice
       - orderservice
-      - adminservice
       - notificationservice
 
   identityservice:
@@ -109,21 +108,6 @@ services:
         SERVICE_NAME: OrderService
     ports:
       - "5051:8080"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-    networks:
-      - spsif-library-network
-
-  adminservice:
-    image: adminservice
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        SERVICE_NAME: AdminService
-    ports:
-      - "5131:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
