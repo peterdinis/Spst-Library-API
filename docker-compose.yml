@@ -27,10 +27,123 @@ services:
       - "5000:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
     networks:
       - spsif-library-network
     depends_on:
       - rabbitmq
+      - identityservice
+      - booksservice
+      - authorservice
+      - categoryservice
+      - orderservice
+      - adminservice
+      - notificationservice
+
+  identityservice:
+    image: identityservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: IdentityService
+    ports:
+      - "5122:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
+
+  booksservice:
+    image: booksservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: BooksService
+    ports:
+      - "5050:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
+
+  authorservice:
+    image: authorservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: AuthorService
+    ports:
+      - "5008:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
+
+  categoryservice:
+    image: categoryservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: CategoryService
+    ports:
+      - "5138:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
+
+  orderservice:
+    image: orderservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: OrderService
+    ports:
+      - "5051:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
+
+  adminservice:
+    image: adminservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: AdminService
+    ports:
+      - "5131:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
+
+  notificationservice:
+    image: notificationservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: NotificationService
+    ports:
+      - "5263:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    networks:
+      - spsif-library-network
 
 volumes:
   rabbitmq_data:
